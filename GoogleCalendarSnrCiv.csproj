@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\js\Shared\Partials\CollapsingSidebarMenu.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
     <None Include="wwwroot\auth\credPath\Google.Apis.Auth.OAuth2.Responses.TokenResponse-user1" />
     <None Include="wwwroot\js\dateFormat.min.js" />
     <None Include="wwwroot\js\fontawesome\all.js" />
@@ -25,6 +31,7 @@
     <None Include="wwwroot\js\fontawesome\v4-shims.min.js" />
     <None Include="wwwroot\js\GoogleCalendar\GoogleCalendar.js" />
     <None Include="wwwroot\js\jquery-dateformat.min.js" />
+    <None Include="wwwroot\js\Shared\Partials\CollapsingSidebarMenu.js" />
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\js\snrScr.js" />
     <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />

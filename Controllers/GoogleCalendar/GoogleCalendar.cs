@@ -64,15 +64,15 @@ public class GoogleCalendar : Controller
     }
 
     [Route("Create")]
-    public async Task<ActionResult> CreateEvent()
+    public async Task<ActionResult> CreateEvent([FromBody] EventDto data)
     {
         var service = await GetCalendarService();
 
         var newEvent = new Event
         {
-            Summary = "New Event",
-            Start = new EventDateTime { DateTimeDateTimeOffset = DateTime.Now },
-            End = new EventDateTime { DateTimeDateTimeOffset = DateTime.Now.AddHours(1) },
+            Summary = data.Summary,
+            Start = new EventDateTime { DateTimeDateTimeOffset = data.Start },
+            End = new EventDateTime { DateTimeDateTimeOffset = data.End },
         };
 
         await service.Events.Insert(newEvent, CalendarId).ExecuteAsync();
@@ -91,8 +91,8 @@ public class GoogleCalendar : Controller
 
         // Update the event (for example, changing the summary)
         existingEvent.Summary = data.Summary;
-        existingEvent.Start.DateTimeRaw = data.Start.ToLocalTime().AddHours(-3).ToString("yyyy-MM-ddTHH:mm:ssK"); // data.Start.ToString("yyyy-MM-ddTHH:mm:ss"); //
-        existingEvent.End.DateTimeRaw = data.End.ToLocalTime().AddHours(-3).ToString("yyyy-MM-ddTHH:mm:ssK"); // data.End.ToString("yyyy-MM-ddTHH:mm:ss"); // 
+        existingEvent.Start.DateTimeRaw = data.Start.ToLocalTime().AddHours(-3).ToString("yyyy-MM-ddTHH:mm:ssK"); 
+        existingEvent.End.DateTimeRaw = data.End.ToLocalTime().AddHours(-3).ToString("yyyy-MM-ddTHH:mm:ssK");
 
         // Execute the update request
         EventsResource.UpdateRequest updateRequest = service.Events.Update(existingEvent, CalendarId, data.Id);

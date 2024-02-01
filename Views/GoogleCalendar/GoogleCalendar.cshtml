@@ -8,36 +8,27 @@
             <div class="row">
                 <div class="col">
                     <div class="d-flex justify-content-center">
-                        <p class="display-4 text-light">Welcome</p>
-                    </div>
-                </div>
-              
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="d-flex justify-content-center">
-                        <h1 class="text-light">Snrc97 GOOGLE CALENDAR API</h1>
+                        <h1 class="text-dark">Snrc97 GOOGLE CALENDAR API</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <div class="d-flex justify-content-center">
-                        <h2 class="text-light">Events</h2>
+                        <h2 class="text-dark">Events</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <div class="d-flex justify-content-end p-3">
-                        <button class="btn text-light p-2 tr-btn" onclick="OnAddEvent()">Add Event</button>
-                    </div>
+                <div class="col d-flex justify-content-end">
+                    <button class="btn p-2 tr-btn-2 mx-3" style="width:90px;" onclick="EventsList()">List</button>
+                    <button class="btn p-2 tr-btn" onclick="OnAddEvent()">Add Event</button>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <div class="table-responsive bg-light p-3">
-                        <table id="listEventsTable" class="table-xl bg-primary text-light" border="1" style="border-style:solid; border-width:3px; width:100%;" cellspacing="10">
+                        <table id="listEventsTable" class="table-xl main-gradient text-light" border="1" style="border-style:solid; border-width:3px; width:100%;" cellspacing="10">
                             <thead>
                                 <tr>
                                     <th hidden>Id</th>
@@ -55,7 +46,7 @@
             </div>
             <div class="row">
                 <div class="col w-100">
-                    <iframe src="https://calendar.google.com/calendar/embed?src=81631d85ca67f34b13829723282807e3e4a539328d6820628f42d27ad74b60b4%40group.calendar.google.com&ctz=Europe%2FIstanbul" style="border: 0; width:100%; height:600px;" frameborder="0" scrolling="no"></iframe>
+                    <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23ffffff&ctz=Europe%2FIstanbul&src=ODE2MzFkODVjYTY3ZjM0YjEzODI5NzIzMjgyODA3ZTNlNGE1MzkzMjhkNjgyMDYyOGY0MmQyN2FkNzRiNjBiNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23D50000" style="border:solid 1px #777; width:100%;" height="600" frameborder="0" scrolling="no"></iframe> 
                 </div>
             </div>
         </div>

@@ -1,0 +1,57 @@
+﻿<div class="container menu-container">
+    <div class="sidebar">
+        <div class="sidebartop">
+            <div class="logo">
+                <img src="/images/logo.png" alt="">
+            </div>
+            <div class="logo-mobile">
+                <img src="/images/mobile.svg" alt="">
+            </div>
+            <div class="menu">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+        <div class="search">
+            <form action="">
+                <button type="submit" class="callSearch"><i class="bi bi-search"></i></button><input type="text" placeholder="Search" class="searchInput">
+            </form>
+        </div>
+        <nav class="nav-list">
+            <ul>
+                <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house"></i><span class="text">Home</span></a></li>
+                <li><a class="nav-link" asp-area="" asp-controller="GoogleCalendar" asp-action="Home"><i class="bi bi-file-earmark"></i><span class="text">Google Calendar</span></a></li>
+                <li><a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="bi bi-gear"></i><span class="text">Privacy</span></a></li>
+
+                @*
+                <li><a href="#"><i class="bi bi-speedometer"></i><span class="text">Dashboard</span></a></li>
+                <li><a href="#"><i class="bi bi-file-earmark"></i><span class="text">Pages</span></a></li>
+                <li><a href="#"><i class="bi bi-pencil-square"></i><span class="text">Posts</span></a></li>
+                <li><a href="#"><i class="bi bi-people"></i><span class="text">Users</span></a></li>
+                <li><a href="#"><i class="bi bi-gear"></i><span class="text">Settings</span></a></li>
+                *@
+            </ul>
+        </nav>
+        <div class="account">
+            <div class="avatar">
+                <img src="/images/avatar.jpg" alt="">
+            </div>
+            <div class="name">
+                <h4>Snrc97</h4>
+                Github
+            </div>
+            <div class="logout">
+                <a href="#"><i class="bi bi-box-arrow-left"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="searchWindow">
+    <button type="button" class="cancelSearch"><i class="bi bi-x"></i></button>
+    <h2>Search Our Site</h2>
+    <form action="">
+        <input type="text" placeholder="Enter your text">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<script async defer charset="ISO-8859-9" src="~/js/Shared/Partials/CollapsingSidebarMenu.js"></script>

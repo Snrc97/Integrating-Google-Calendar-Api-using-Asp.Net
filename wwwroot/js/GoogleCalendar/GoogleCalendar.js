@@ -1,8 +1,4 @@
-﻿function Show() {
-    alert("Showing");
-}
-
-
+﻿
 
 ///* exported gapiLoaded */
 ///* exported gisLoaded */
@@ -195,7 +191,7 @@ function DrawEventsListDataTable(data) {
             {
                 width: "30px",
                 render: function (data, type, row) {
-                    if (row.id == null) {
+                    if (row.id.includes('-')) {
                         return "";
                     }
                     return '<center><button class="btn btn-success" onclick=\'EventUpdate("' + row.id + '")\'><i class="fa-solid fa-check"></i></button></center>';
@@ -204,16 +200,14 @@ function DrawEventsListDataTable(data) {
             {
                 width: "30px",
                 render: function (data, type, row) {
-                    if (row.id == null) {
-                        return "";
-                    }
+                   
                     return '<center><button class="btn btn-danger" onclick=\'EventDelete("' + row.id + '")\'><i class="fa-solid fa-trash"></i></button></center>';
                 }
             },
             {
                 width: "30px",
                 render: function (data, type, row) {
-                    if (row.id != null) {
+                    if (!row.id.includes('-')) {
                         return "";
                     }
                     return '<center><button class="btn btn-warning text-light" onclick=\'EventCreate("' + row.id + '")\'><i class="fa-solid fa-plus"></i></button></center>';
@@ -227,24 +221,22 @@ function DrawEventsListDataTable(data) {
 }
 
 function OnAddEvent() {
+    if (_EventsList.some(x => x.id.includes('-'))) {
+        return;
+    }
 
-    var newEvent = { id: null, start: null, end: null, summary:"Empty"  }
+    var date = new Date(Date.now());
+    var startDate = $.format.date(date.toString(), "yyyy-MM-ddTHH:mm:ss");
+    var endDate = $.format.date(date.toString(), "yyyy-MM-ddTHH:mm:ss");
+
+    var newEvent = { id: NewGuid(), start: startDate, end: endDate, summary: "Empty" }
     _EventsList.push(newEvent);
     DrawEventsListDataTable(_EventsList);
-}
-
-function EventCreate() {
-    AjaxPost("GoogleCalendar/Create", null, EventCreateCallBack);
-}
-
-function EventCreateCallBack(res) {
-    if (res) {
-        Refresh();
-    }
+   
 }
 
 function OnUpdate(element, id) {
-
+    
     let row = _EventsList.find(x => x.id == id);
     if (row == null) {
         return;
@@ -280,8 +272,30 @@ function OnUpdate(element, id) {
     }
 }
 
-function EventUpdate(id) {
 
+function EventCreate(id) {
+   
+    let row = _EventsList.find(x => x.id == id);
+    if (row == null) {
+        return;
+    }
+
+    var prm = { Id: row.id, Summary: row.summary, Start: row.start, End: row.end }
+    AjaxPost("GoogleCalendar/Create", prm, EventCreateCallBack);
+}
+
+function EventCreateCallBack(res) {
+    if (res) {
+        Successful("Oluşturma işlemi Başarılı");
+        EventsList();
+        return;
+    }
+
+    Fail("Oluşturma işlemi Başarısız");
+}
+
+function EventUpdate(id) {
+    
     let row = _EventsList.find(x => x.id == id);
     if (row == null) {
         return;
@@ -293,18 +307,30 @@ function EventUpdate(id) {
 
 function EventUpdateCallBack(res) {
     if (res) {
-        Refresh();
+        Successful("Güncelleme işlemi Başarılı");
+        EventsList();
+        return;
     }
+    Fail("Güncelleme işlemi Başarısız");
 }
 
 function EventDelete(Id) {
+    if (Id.includes('-')) {
+        _EventsList = _EventsList.filter(x => x.id != Id);
+        Successful("Silme işlemi Başarılı");
+        DrawEventsListDataTable(_EventsList);
+        return;
+    }
     AjaxPost("GoogleCalendar/Delete", Id, EventDeleteCallBack);
 }
 
 function EventDeleteCallBack(res) {
     if (res) {
-        Refresh();
+        Successful("Silme işlemi Başarılı");
+        EventsList();
+        return;
     }
+    Fail("Silme işlemi Başarısız");
 }
 
 EventsList();

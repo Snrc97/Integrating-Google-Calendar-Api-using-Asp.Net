@@ -44,17 +44,33 @@ body {
 }
 
 .gbg {
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 19%, rgba(0,212,255,1) 100%);
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(245,245,245,1) 100%);
 }
 
 .tr-btn {
     background-color: transparent;
+    color:#3CC;
     transition-duration: 0.25s;
     border: solid;
-    border-width: 0.5px;
+    border-width: 1px;
 }
 
-    .tr-btn:hover {
-        background-color: rgba(0,212,255,1);
-    }
+.tr-btn:hover {
+    color:#FFF;
+    background-color: #3CC;
+}
+
+.tr-btn-2 {
+    background-color: #3CC;
+    color: #FFF;
+   
+    transition-duration: 0.25s;
+    border: solid;
+    border-width: 1px;
+}
+
+.tr-btn-2:hover {
+    color: #FFF;
+    background-image: linear-gradient(rgb(0 0 0/10%) 0 0);
+}

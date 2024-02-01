@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Google Calendar Snr";
+}
+
+<div class="container pt-4"> 
+    <div class="row">
+        <div class="col-xxl">
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-center">
+                        <p class="display-4 text-light">Welcome</p>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-center">
+                        <h1 class="text-light">Snrc97 GOOGLE CALENDAR API</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-center">
+                        <h2 class="text-light">Events</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-end p-3">
+                        <button class="btn text-light p-2 tr-btn" onclick="OnAddEvent()">Add Event</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive bg-light p-3">
+                        <table id="listEventsTable" class="table-xl bg-primary text-light" border="1" style="border-style:solid; border-width:3px; width:100%;" cellspacing="10">
+                            <thead>
+                                <tr>
+                                    <th hidden>Id</th>
+                                    <th>Summary</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
+                                    <th>Create</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col w-100">
+                    <iframe src="https://calendar.google.com/calendar/embed?src=81631d85ca67f34b13829723282807e3e4a539328d6820628f42d27ad74b60b4%40group.calendar.google.com&ctz=Europe%2FIstanbul" style="border: 0; width:100%; height:600px;" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+<script async defer charset="ISO-8859-9" src="~/js/GoogleCalendar/GoogleCalendar.js"></script>
+}
+
+
+@*
+<p>Google Calendar API Quickstart</p>
+
+<!--Add buttons to initiate auth sequence and sign out-->
+<button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+<button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+
+<pre id="content" style="white-space: pre-wrap;"></pre>
+
+
+
+<script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+<script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+
+*@
+
+
+
+
+
+
+
+
+
